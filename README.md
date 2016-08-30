@@ -15,12 +15,12 @@ The image with PUID=1000 and PGID=1000 is available on the [Docker Hub](https://
 ### Configuration changes
 The image is supposed to be working with https://github.com/linuxserver/docker-plex.
 
-**mediaserver_log_location** is changed in the image to */config/Library/Application Support/Plex Media Server/Logs/Plex Media Server.log* so that it matches linuxserver/plex log location.
-**log_file**: plex_scrobble.log location is also moved to */home/plex/.config/plex-lastfm-scrobbler/*
-The **mediaserver_url* = http://localhost:32400 is likely have to be changed (see below).
+- **mediaserver_log_location** is changed in the image to */config/Library/Application Support/Plex Media Server/Logs/Plex Media Server.log* so that it matches linuxserver/plex log location.
+- **log_file**: plex_scrobble.log location is also moved to */home/plex/.config/plex-lastfm-scrobbler/*
+- The **mediaserver_url** = http://localhost:32400 is likely have to be changed (see below).
 
 ### Starting plex-scrobble for the first time
-The follwong assumes the plex container is stared with docker run command similar to:
+The following assumes the plex container is stared with docker run command similar to:
 ```bash
 docker run \
     --name=plex_server \
