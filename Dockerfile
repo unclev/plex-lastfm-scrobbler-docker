@@ -18,4 +18,5 @@ RUN cd /tmp \
  && chmod +x /plex-scrobble
 USER plex
 VOLUME ["/home/plex/.config/plex-lastfm-scrobbler"]
-CMD ["/plex-scrobble"]
+ENTRYPOINT ["/plex-scrobble"]
+CMD ["python","/usr/local/bin/plex-scrobble.py"]

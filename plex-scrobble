@@ -2,4 +2,4 @@
 if [ ! -f "/home/plex/.config/plex-lastfm-scrobbler/plex_scrobble.conf" ]; then
     cp /plex_scrobble.conf /home/plex/.config/plex-lastfm-scrobbler/
 fi
-plex-scrobble.py
+exec "$@"
