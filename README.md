@@ -3,19 +3,21 @@ To build an image execute at command prompt
 ```bash
 docker build -t plex_scrobbler .
 ```
-This creates an image with plex user having uid(1000) and gid(1000) - the typicall fist ubuntu user. 
+This creates an image with plex user having uid(1000) and gid(1000) - the typical fist ubuntu user. 
 plex-lastfm-scrobbler executes in the name of plex user.
 
 You may want changing plex user uid and pid, for eg. 1001. To do so build with build arguments:
 ```bash
 docker build -t plex_scrobbler --build-arg PUID=1001 --build-arg PGID=1001 .
 ```
+The image with PUID=1000 and PGID=1000 is available on the [Docker Hub](https://hub.docker.com/r/unclev/plex-lastfm-scrobbler/).
+
 ### Configuration changes
 The image is supposed to be working with https://github.com/linuxserver/docker-plex.
 
-mediaserver_log_location is chaged in the image to /config/Library/Application Support/Plex Media Server/Logs/Plex Media Server.log so that it matches linuxserver/plex log location.
-plex_scrobble.log location is also moved to /home/plex/.config/plex-lastfm-scrobbler/
-The mediaserver_url = http://localhost:32400 is likely have to be changed (see below).
+**mediaserver_log_location** is changed in the image to */config/Library/Application Support/Plex Media Server/Logs/Plex Media Server.log* so that it matches linuxserver/plex log location.
+**log_file**: plex_scrobble.log location is also moved to */home/plex/.config/plex-lastfm-scrobbler/*
+The **mediaserver_url* = http://localhost:32400 is likely have to be changed (see below).
 
 ### Starting plex-scrobble for the first time
 The follwong assumes the plex container is stared with docker run command similar to:
@@ -31,7 +33,7 @@ docker run \
     linuxserver/plex
 ```
 
-LastFM requires 3rd party acces to be comfirmed. Run plex-lastfm-scrobbler container similar to the follows (note -it --rm options, that is in interactive mode, and removing container after execution):
+LastFM requires 3rd party access to be comfirmed. Run plex-lastfm-scrobbler container similar to the follows (note -it --rm options, that is in interactive mode, and removing container after execution):
 ```bash
 docker run \
     --name=plex_scrobbler \
@@ -54,7 +56,7 @@ As soon as autorized at last.fm web site, reply y, the application gracefully ex
 Have you authorized me [y/N] :y
 Please relaunch plex-scrobble service.
 ```
-By this point there are 3 files in the /srv/plex/plex-lastfm-scrobbler/ folder on your host machine, which was mapped to /home/plex/.config/plex-lastfm-scrobbler plex_scrobbler folder:
+By this point there are 3 files in the /srv/plex/plex-lastfm-scrobbler/ folder on your host machine, which was mapped to */home/plex/.config/plex-lastfm-scrobbler plex_scrobbler* folder:
 ```
 plex_scrobble.conf
 plex_scrobble.log
