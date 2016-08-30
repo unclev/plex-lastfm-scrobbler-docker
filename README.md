@@ -1,3 +1,9 @@
+### Known issues
+- #1 the process does not exit gracefully on docker stop;
+- Plex Server and plex-lastfm-scrobbler container must be on the same network so that plex-lastfm-scrobbler can access Plex/Web
+
+  (the last could probably been fixed by allowing this host docker network in Plex Server settings - not tested).
+
 ### Building the image
 To build an image execute at command prompt
 ```bash
